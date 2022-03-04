@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <omp.h>
 
 #define N 3200
 void multiplyMatrices(int first[][N], int second[][N], int result[][N]) 
 {
    // Multiplying first and second matrices and storing it in result
-   for (int i = 0; i < N; ++i) {
-      for (int j = 0; j < N; ++j) {
-         for (int k = 0; k < N; ++k) {
+   int i,j,k;
+   #pragma omp parallel for private(i,j,k) shared(first,second,result)
+   for (i = 0; i < N; ++i) {
+      for (j = 0; j < N; ++j) {
+         for (k = 0; k < N; ++k) {
             result[i][j] += first[i][k] * second[k][j];
          }
       }
@@ -59,7 +62,7 @@ int main()
 {
 	clock_t start1, start2, stop1, stop2; // declaration of ftype
 	double execution_time1,execution_time2;
-
+	omp_set_num_threads(omp_get_num_procs());
 	int first[N][N], second[N][N], result[N][N];
 	
 	start1 = clock();
