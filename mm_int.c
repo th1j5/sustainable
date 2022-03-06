@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 3200
+#define N 2096
 void multiplyMatrices(int first[][N], int second[][N], int result[][N]) 
 {
    // Multiplying first and second matrices and storing it in result

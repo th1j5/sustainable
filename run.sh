@@ -1,5 +1,6 @@
 #!/bin/bash
-EVENTS="power/energy-cores/,power/energy-pkg/,power/energy-ram/,instructions,cycles"
+#EVENTS="power/energy-cores/,power/energy-pkg/,power/energy-ram/,instructions,cycles"
+EVENTS="power/energy-pkg/,instructions,cycles"
 echo "===== Running mm_int ====="
 for i in {1..3}; do (perf stat -a -e $EVENTS ./mm_int); done
 echo "===== Running mm_float ====="
