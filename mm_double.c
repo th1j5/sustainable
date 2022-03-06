@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 1600
+#define N 3200
 void multiplyMatrices(double first[][N], double second[][N], double result[][N]) 
 {
    // Multiplying first and second matrices and storing it in result
@@ -78,4 +78,3 @@ int main()
 	printf("MM execution Time in seconds: %.10lf\n", execution_time2 );
 	return 0;
 }
-	

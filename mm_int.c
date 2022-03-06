@@ -78,4 +78,3 @@ int main()
 	printf("MM execution Time in seconds: %.10lf\n", execution_time2 );
 	return 0;
 }
-	
