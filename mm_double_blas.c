@@ -8,9 +8,12 @@
 
 int main()
 {
-    double *first = (double *)malloc( N*N*sizeof( double ) );
-    double *second = (double *)malloc( N*N*sizeof( double ) );
-    double *result = (double *)malloc( N*N*sizeof( double ) );
+    static double *first = NULL;
+    static double *second = NULL;
+    static double *result = NULL;
+    if ( first == NULL ) first = (double *)malloc( N*N*sizeof( double ) );
+    if ( second == NULL ) second = (double *)malloc( N*N*sizeof( double ) );
+    if ( result == NULL ) result = (double *)malloc( N*N*sizeof( double ) );
     int i;
     srand(time(NULL));
     double start1, start2, stop1, stop2, execution_time1, execution_time2;
@@ -22,7 +25,7 @@ int main()
         result[i] = 0.0;
     }
     stop1 = omp_get_wtime();
-    printf("read\n");
+
     start2 = omp_get_wtime();
     cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, N,N,N, 1.0, first, N, second, N, 0.0, result, N);
     stop2 = omp_get_wtime();

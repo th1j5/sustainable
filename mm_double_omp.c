@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
     }        
     double start1, start2, stop1, stop2, execution_time1, execution_time2;
     omp_set_num_threads(nthread);
-    double first[N][N], second[N][N], result[N][N];
+    static double first[N][N], second[N][N], result[N][N];
 
     start1 = omp_get_wtime();
     fill_matrices(first, second, result);

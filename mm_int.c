@@ -60,7 +60,7 @@ int main()
 	clock_t start1, start2, stop1, stop2; // declaration of ftype
 	double execution_time1,execution_time2;
 
-	int first[N][N], second[N][N], result[N][N];
+	static int first[N][N], second[N][N], result[N][N];
 	
 	start1 = clock();
 	fill_matrices(first, second, result);
