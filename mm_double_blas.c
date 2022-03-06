@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <cblas.h>
-#define N 8192
+#include <omp.h>
 
+#define N 10000
 
 int main()
 {
@@ -12,19 +13,19 @@ int main()
     double *result = (double *)malloc( N*N*sizeof( double ) );
     int i;
     srand(time(NULL));
+    double start1, start2, stop1, stop2, execution_time1, execution_time2;
+    
+    start1 = omp_get_wtime();
     for (i = 0; i < (N*N); i++) {
         first[i] = (double)(rand() % 10);
-    }
-
-    for (i = 0; i < (N*N); i++) {
         second[i] = (double)(rand() % 10);
-    }
-
-    for (i = 0; i < (N*N); i++) {
         result[i] = 0.0;
     }
-
+    stop1 = omp_get_wtime();
+    printf("read\n");
+    start2 = omp_get_wtime();
     cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, N,N,N, 1.0, first, N, second, N, 0.0, result, N);
+    stop2 = omp_get_wtime();
     
     /*for (i = 0; i < (N*N); i++) {
         printf("%f ", first[i]);
@@ -38,6 +39,11 @@ int main()
         printf("%f ", result[i]);
     }
     printf("\n");*/
+    execution_time1 = stop2 - start1;
+    execution_time2 = stop2 - start2;
+    printf("Total execution Time in seconds: %.10lf\n", execution_time1 );
+	printf("MM execution Time in seconds: %.10lf\n", execution_time2 );
+    
     free(first);
     free(second);
     free(result);
