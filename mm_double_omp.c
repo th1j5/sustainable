@@ -3,7 +3,9 @@
 #include <time.h>
 #include <omp.h>
 #include <sys/time.h>
+
 #define N 8192
+
 void multiplyMatrices(double first[][N], double second[][N], double result[][N]) 
 {
     // Multiplying first and second matrices and storing it in result
