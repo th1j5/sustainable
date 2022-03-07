@@ -2,7 +2,12 @@
 
 # Run `cpupower frequency-info` to see information about policies
 MIN_FREQ=`sudo cat /sys/devices/system/cpu/cpufreq/policy0/cpuinfo_min_freq`
+
 MAX_FREQ=`sudo cat /sys/devices/system/cpu/cpufreq/policy0/cpuinfo_max_freq`
+# cpuinfo_max_freq seems to be the turboboost frequency. So, it may not work.
+if [ -f "/sys/devices/system/cpu/cpufreq/policy0/bios_limit" ]; then
+  MAX_FREQ=`sudo cat /sys/devices/system/cpu/cpufreq/policy0/bios_limit`
+
 if [ $1 = "powersave" ]; then
   echo "Minimum frequency is $MIN_FREQ Hz"
   sudo cpupower frequency-set -d $MIN_FREQ

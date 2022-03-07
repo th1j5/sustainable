@@ -22,6 +22,6 @@ for i in {1..3}; do (perf stat -a -e $EVENTS ./mm_double_omp 16); done
 echo "===== Running mm_double_blas ====="
 for i in {1..3}; do (perf stat -a -e $EVENTS ./mm_double_blas); done
 echo "===== Running mm_py ====="
-for i in {1..3}; do (perf stat -a -e $EVENTS python3 ./mm.py); done
+for i in {1..1}; do (perf stat -a -e $EVENTS python3 ./mm.py); done
 echo "===== Running mm_np_py ====="
 for i in {1..3}; do (perf stat -a -e $EVENTS python3 ./mm_np.py); done

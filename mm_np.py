@@ -1,7 +1,7 @@
 import numpy as np
 import time
 
-N = 6000
+N = 8192
 t = time.time()
 X = np.random.uniform(0,10,[N,N])
 Y = np.random.uniform(0,10,[N,N])

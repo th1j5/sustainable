@@ -4,7 +4,7 @@
 #include <cblas.h>
 #include <omp.h>
 
-#define N 6000
+#define N 8192
 
 int main()
 {

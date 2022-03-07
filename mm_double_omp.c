@@ -4,7 +4,7 @@
 #include <omp.h>
 #include <sys/time.h>
 
-#define N 6000
+#define N 4096
 
 void multiplyMatrices(double first[][N], double second[][N], double result[][N]) 
 {
